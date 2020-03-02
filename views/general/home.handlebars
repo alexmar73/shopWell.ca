@@ -1,0 +1,135 @@
+<!--<section class="promotions">
+<div id="deals">
+    <div>Valentine's Day Deals</div>
+    <div> <img src="/img/tablet.png">
+    <p>Samsung Galaxy Tab A<br>NOW $199.99</p>
+    </div>  
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>  
+    
+</div>
+    
+</section> 
+
+
+    <table id="seasonal">
+  <tr>
+    <th>Valentine's Day Deals<br>Limited Time Offer</th>
+    <th><img src="/img/tablet.png"></th>
+    <th><img src="/img/bottle.png"></th>
+    <th><img src="/img/toothbrush.png"></th>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Samsung Galaxy Tab A<br>NOW $199.99</td>
+    <td>S'well Stone Collection<br>NOW $39.99</td>
+    <td>Quip Electric Toothbrush - (RED)<br>NOW $29.99</td>
+  </tr>
+</table>
+
+
+<div class="categories">
+<p>Browse All Categories</p>
+ <table id="categories">
+  <tr>
+    <th>Electronics & Accessories</th>
+    <th>Home & Kitchen</th>
+    <th>Health & Personal Care</th>
+    <th>Footwear</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td><img src="/img/electronics.jpg"></td>
+    <td><img src="/img/home.jpg"></td>
+    <td><img src="/img/personal_care.png"></td>
+    <td><img src="/img/footwear.jpg"></td>
+  </tr>
+</table>
+</div>
+
+-->
+
+<!--
+<div>
+    <img src="/img/promotion/watch.jpg" id="slideshow">
+</div>
+-->
+
+<div class="gallery">
+	  <div class="desc"> VALENTINE'S <br> DAY <br> DEALS <br> DEALS <br> DEALS </div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="img_5terre.jpg">
+    <img src="/img/home/promotion/watch.jpg" alt="Rose Gold Women's Watch" >
+  </a>
+  <div class="desc">Michael Kors Rose Gold Watch <br> NOW $99</div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="img_forest.jpg">
+    <img src="/img/home/promotion/tablet.jpg" alt="iPad and Stylus Pen">
+  </a>
+  <div class="desc">Space Gray iPad <br> NOW $169</div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="img_lights.jpg">
+    <img src="/img/home/promotion/toothbrush.jpg" alt="Quip Electric Toothbrush">
+  </a>
+  <div class="desc">Quip Electric Toothbrush Kit <br> NOW $29</div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="img_mountains.jpg">
+    <img src="/img/home/promotion/airPods.jpg" alt="Pair of AirPod headphones">
+  </a>
+  <div class="desc">Apple AirPods <br> NOW $269</div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="img_mountains.jpg">
+    <img src="/img/home/promotion/vacuum.jpg" alt="Cordless Self-Driving Vacuum">
+  </a>
+  <div class="desc">iRobot Roomba <br> NOW $299</div>
+</div>
+
+<section>
+<h2>Browse All Categories</h2>
+</section>
+
+
+
+<section>
+    {{#each categories}}
+        <div class="gallery">
+        <div class="desc">{{this.title}} </div>
+        <a target="_blank" href="img_5terre.jpg">
+           <img src={{this.image}} alt="Rose Gold Women's Watch" >
+        </a>
+        
+        </div>
+
+    {{/each}}
+</section>
+
+<section>
+<h2>Best Sellers</h2>
+</section>
+
+
+
+
+<section>
+    {{#each sellers}}
+        <div class="gallery">
+        <div class="desc">{{this.title}} </div>
+        <a target="_blank" href="img_5terre.jpg">
+           <img src={{this.image}} alt="Rose Gold Women's Watch" >
+        </a>
+        
+        </div>
+
+    {{/each}}
+</section>
