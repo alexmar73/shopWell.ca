@@ -72,17 +72,37 @@ app.get("/registration",(req,res)=>{
 //Handle when a user submits registration form
 app.post("/registration",(req,res)=>{
 
-            //destructuring
-            const {firstName,lastName,username, password} =req.body;
 
-            usersModel.pushUser({firstName,lastName,username, password});
+    const errMsg=[];
+
+    if(req.body.firstName == "")
+    {
+        errMsg.push("First Name cannot be blank");
+    }
+
+    if(errMsg.length > 0)
+    {
+        console.log(errMsg);
+        res.render("registration/registration",{
+            errors: errMsg
+        })
+    
+    }
+    else
+    {
+        //destructuring
+        const {firstName,lastName,username, password} =req.body;
+
+        usersModel.pushUser({firstName,lastName,username, password});
+        
+        res.render("registration/registration",{
+                title : "Registration Page",
+                successMessage :`Thank you ${firstName} ${lastName}
+                your account is registered! Go to login page.`,
+                
+        });
+    }
             
-            res.render("registration/registration",{
-                    title : "Registration Page",
-                    successMessage :`Thank you ${firstName} ${lastName}
-                    your account is registered! Go to login page.`,
-                    
-            });
 
     
 
