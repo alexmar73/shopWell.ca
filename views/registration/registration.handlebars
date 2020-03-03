@@ -1,4 +1,9 @@
 <div>{{successMessage}}</div>
+{{#each errors}}
+<div class="alert-error">
+    {{this}}
+</div>
+{{/each}}
 <div class="container">
 <h1>Create Account</h1>
 <hr>
