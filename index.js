@@ -104,6 +104,14 @@ app.post("/registration",(req,res)=>{
     if( req.body.password == ""  )
     {
         pwError1.push("Enter your password");
+
+        // ANYTIME I TRY TO ADD A SECOND REQUIREMENT TO THE PASSWORD, IT DOESN'T WORK
+        // WHY?
+        // WHY DOESN't THIS WORK?
+        if(req.body.password == "lol")
+        {
+            pwError1.push("Not funny");
+        }
     }
 
     // if( req.body.password != /[a-z]/ || req.body.password != /[A-Z]/ || req.body.password != /[0-9]/)
@@ -134,6 +142,7 @@ app.post("/registration",(req,res)=>{
     {
         //destructuring
         const {firstName,lastName,username, password} =req.body;
+    
 
         usersModel.pushUser({firstName,lastName,username, password});
         
@@ -143,6 +152,24 @@ app.post("/registration",(req,res)=>{
                 your account is registered! Go to login page.`,
                 
         });
+
+        
+        const sgMail = require('@sendgrid/mail');
+        sgMail.setApiKey("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");
+        const msg = {
+        to: `${username}`,
+        from: 'support@shopWell.ca',
+        subject: `${firstName} Welcome to shopWell!`,
+        text: 'Almost there! Please confirm your email address. By clicking on the following link, you are confirming your email address.',
+        html: 'Almost there! <br>Please confirm your email address. <br> <br> By clicking on the following link, you are confirming your email address.',
+        };
+        sgMail.send(msg)
+        .then(()=>{
+            res.redirect("/");
+        })
+        .catch(err=>{
+            console.log(`Error ${err}`);
+        })
     }
             
 
