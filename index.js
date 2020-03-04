@@ -57,6 +57,14 @@ app.get("/products",(req,res)=>{
 });
 
 
+//DASHBOARD route
+app.get("/dashboard", (req,res)=>{
+    res.render("general/dashboard",{
+        title: "Dashboard"
+    });
+});
+
+
 //REGISTRATION route
 app.get("/registration",(req,res)=>{
 
@@ -146,14 +154,15 @@ app.post("/registration",(req,res)=>{
 
         usersModel.pushUser({firstName,lastName,username, password});
         
-        res.render("registration/registration",{
-                title : "Registration Page",
-                successMessage :`Thank you ${firstName} ${lastName}
-                your account is registered! Go to login page.`,
-                
-        });
-
         
+        // res.render("registration/registration",{
+        //         title : "Registration Page",
+        //         successMessage :`Thank you ${firstName} ${lastName}
+        //         your account is registered! Go to login page.`,
+                
+        // });
+
+       
         const sgMail = require('@sendgrid/mail');
         sgMail.setApiKey("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");
         const msg = {
@@ -165,7 +174,7 @@ app.post("/registration",(req,res)=>{
         };
         sgMail.send(msg)
         .then(()=>{
-            res.redirect("/");
+            res.redirect("/dashboard");
         })
         .catch(err=>{
             console.log(`Error ${err}`);
