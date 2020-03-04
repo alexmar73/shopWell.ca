@@ -73,18 +73,60 @@ app.get("/registration",(req,res)=>{
 app.post("/registration",(req,res)=>{
 
 
-    const errMsg=[];
+   const fnError=[];
+   const lnError=[];
+   const emError=[];
+   const pwError1=[];
+   //const pwError2=[];
+
+
+    // const test=req.body.password.length;
+    // console.log(test);
+
+
 
     if(req.body.firstName == "")
     {
-        errMsg.push("First Name cannot be blank");
+        fnError.push("Enter your First Name");
     }
 
-    if(errMsg.length > 0)
+    if(req.body.lastName == "")
     {
-        console.log(errMsg);
+        lnError.push("Enter your last name");
+    }
+
+    if(req.body.username == "")
+    {
+        emError.push("Enter your email");
+    }
+
+
+    if( req.body.password == ""  )
+    {
+        pwError1.push("Enter your password");
+    }
+
+    // if( req.body.password != /[a-z]/ || req.body.password != /[A-Z]/ || req.body.password != /[0-9]/)
+    // {
+    //     pwError2.push("Password cannot contain special characters");
+    // }
+
+    if(fnError.length > 0 || lnError.length > 0 || emError > 0 || pwError1 > 0 )
+    //|| pwError2 > 0
+    {
+        
+        console.log(fnError);
+        console.log(lnError);
+        console.log(emError);
+        console.log(pwError1);
+        //console.log(pwError2);
         res.render("registration/registration",{
-            errors: errMsg
+            //errors: errMsg
+            errorFN: fnError,
+            errorLN: lnError,
+            errorEM: emError,
+            errorPW1: pwError1,
+            //errorPW2: pwError2
         })
     
     }
