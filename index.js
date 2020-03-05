@@ -164,7 +164,7 @@ app.post("/registration",(req,res)=>{
 
        
         const sgMail = require('@sendgrid/mail');
-        sgMail.setApiKey("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");
+        sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
         const msg = {
         to: `${username}`,
         from: 'support@shopWell.ca',
