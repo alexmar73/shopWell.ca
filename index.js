@@ -172,8 +172,8 @@ app.post("/registration",(req,res)=>{
         to: `${username}`,
         from: 'support@shopWell.ca',
         subject: `${firstName} Welcome to shopWell!`,
-        text: 'Almost there! Please confirm your email address. By clicking on the following link, you are confirming your email address.',
-        html: 'Almost there! <br>Please confirm your email address. <br> <br> By clicking on the following link, you are confirming your email address.',
+        text: `You're there! Please confirm your email address. By clicking on the following link, you are confirming your email address.`,
+        html: `You're there! <br>Please confirm your email address. <br> <br> By clicking on the following link, you are confirming your email address.`,
         };
         sgMail.send(msg)
         .then(()=>{
