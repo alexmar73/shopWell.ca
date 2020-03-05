@@ -6,27 +6,27 @@
 <form method="POST" action ="/registration">
 
 
-<div>
+<div class="error">
     {{errorFN}}
 </div>
     <label for="firstName"><b>First Name</b></label>    
     <input type="text" placeholder="Enter First Name" id="firstName" name="firstName"> <br>
-<div>
+<div class="error">
     {{errorLN}}
 </div>
     <label for="lastName"><b>Last Name</b></label>    
     <input type="text" placeholder="Enter Last Name" id="lastName" name="lastName"> <br>
-<div>
+<div class="error">
     {{errorEM}}
 </div>
     <label for="username"><b>Email</b></label>    
     <input type="text" placeholder="Enter Email" id="username" name="username"> <br> 
-<div>
+<div class="error">
    {{errorPW1}}
 </div>
-{{!-- <div>
+<div class="error">
    {{errorPW2}}
-</div> --}}
+</div>
     <label for="password"><b>Password</b></label>    
     <input type="password" placeholder="Enter Password" id="password" name="password"></textarea> <br>
 <hr>

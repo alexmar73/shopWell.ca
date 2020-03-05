@@ -88,11 +88,7 @@ app.post("/registration",(req,res)=>{
    const lnError=[];
    const emError=[];
    const pwError1=[];
-   //const pwError2=[];
-
-
-    // const test=req.body.password.length;
-    // console.log(test);
+   const pwError2=[];
 
 
 
@@ -110,42 +106,41 @@ app.post("/registration",(req,res)=>{
     {
         emError.push("Enter your email");
     }
+   
 
 
-    if( req.body.password == ""  )
+    const pwLength = req.body.password.length;
+    console.log(pwLength); 
+
+    if( req.body.password == "")
     {
         pwError1.push("Enter your password");
-
-        // ANYTIME I TRY TO ADD A SECOND REQUIREMENT TO THE PASSWORD, IT DOESN'T WORK
-        // WHY?
-        // WHY DOESN't THIS WORK?
-        if(req.body.password == "lol")
-        {
-            pwError1.push("Not funny");
-        }
     }
+    else if(pwLength> 0 && (pwLength < 6 || pwLength > 12))
+     {
+         console.log(`inside`);
+         pwError2.push("Password must have at least 6 characters but no more than 12");
+         console.log(pwError2);
+     }
+    
 
-    // if( req.body.password != /[a-z]/ || req.body.password != /[A-Z]/ || req.body.password != /[0-9]/)
-    // {
-    //     pwError2.push("Password cannot contain special characters");
-    // }
+    if(fnError.length > 0 || lnError.length > 0 || emError.length > 0 || pwError1.length > 0 || pwError2.length > 0)
 
-    if(fnError.length > 0 || lnError.length > 0 || emError > 0 || pwError1 > 0 )
-    //|| pwError2 > 0
     {
-        
+        console.log(`inside 2`);
         console.log(fnError);
         console.log(lnError);
         console.log(emError);
         console.log(pwError1);
-        //console.log(pwError2);
+        console.log(pwError2);
+
         res.render("registration/registration",{
             //errors: errMsg
             errorFN: fnError,
             errorLN: lnError,
             errorEM: emError,
             errorPW1: pwError1,
-            //errorPW2: pwError2
+            errorPW2: pwError2
         })
     
     }
@@ -206,14 +201,42 @@ app.get("/login",(req,res)=>{
 //Handle when a user submits login info
 app.post("/login",(req,res)=>{
 
-   const {username,password} = req.body;
-   let users = usersModel.findUser(username, password);
+   const usrError=[];
+   const pwError=[];
+   //const {username,password} = req.body;
+   const {firstName,lastName,username, password} =req.body;
+   let users = usersModel.findUser(username, password, firstName);
 
-   res.render("registration/login",{
-    title : "Login Page",
-    successMessage :`Welcome ${users[0].firstName}!`
-    
-});
+   if(username == "")
+   {
+       usrError.push("Enter your username");
+   }
+
+   if(password == "")
+   {
+       pwError.push("Enter your password");
+   }
+
+   if(usrError.length > 0 || pwError.length > 0)
+    {
+        
+        console.log(usrError);
+        console.log(pwError);
+        res.render("registration/login",{
+            errorUSR: usrError,
+            errorPW: pwError
+        })
+    }
+   else
+   {
+    res.render("registration/login",{
+        title : "Login Page",
+        successMessage :`Welcome ${users[0].firstName}!`
+        
+    });
+   }
+
+
    
 
 });

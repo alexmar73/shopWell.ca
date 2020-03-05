@@ -301,3 +301,18 @@ div.products {
   .container a {
     color: dodgerblue;
   }
+
+  .error
+  {
+    color: red;
+    font-size: small;
+  }
+
+  /* Dashboard CSS*/
+  #dash
+  {
+    text-align: center;
+    color: #792730;
+  }
+
+  

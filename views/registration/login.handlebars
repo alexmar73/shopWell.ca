@@ -2,9 +2,15 @@
 <div class="container">
     <h1>Sign-In</h1>
     <form method="POST" action ="/login">
+    <div class="error">
+    {{errorUSR}}
+    </div>
     <label for="username"><b>Username</b></label>    
     <input type="text" placeholder="Enter your email" id="username" name="username"> <br>
 
+    <div class="error">
+    {{errorPW}}
+    </div>
     <label for="password"><b>Password</b></label>    
     <input type="text" placeholder="Enter your password" id="password" name="password"> <br>
 
